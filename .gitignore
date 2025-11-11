@@ -1,0 +1,34 @@
+# General
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+env/
+venv/
+/.venv
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Windows
+*.log
+*.tmp
+*.temp
+*.bak
+~$*
+
+# VS Code
+.vscode/
+
+# Environment
+.env
+.env.*
