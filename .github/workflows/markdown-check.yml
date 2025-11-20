@@ -1,0 +1,39 @@
+name: Markdown & Links Check
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+
+jobs:
+  markdownlint:
+    name: Markdown format kontrol
+    runs-on: ubuntu-latest
+    steps:
+      - name: Kodu ce
+        uses: actions/checkout@v4
+
+      - name: Node kurulum
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: markdownlint-cli ykle
+        run: npm install -g markdownlint-cli
+
+      - name: Markdown dosyalar tarama
+        run: markdownlint "**/*.md" || true
+
+  link-checker:
+    name: Link kontrol
+    runs-on: ubuntu-latest
+    steps:
+      - name: Kodu ce
+        uses: actions/checkout@v4
+
+      - name: Link Checker tir
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: --verbose --no-progress "**/*.md"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
